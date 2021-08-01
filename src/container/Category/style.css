@@ -1,0 +1,49 @@
+button {
+  margin: 2px 8px;
+  border-radius: 5px;
+}
+button > span {
+  color: black;
+}
+.modal-header {
+  padding: 5px, 15px;
+  background-color: #333;
+}
+.modal-title {
+  font-size: 18px;
+  color: white;
+}
+.modal-footer {
+  padding: 5px, 15px;
+}
+
+.expanded-items {
+  background-color: #333;
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin: 5px 2px;
+  color: white;
+  float: left;
+}
+.checked-label {
+  content: "";
+  clear: both;
+  padding: 2px 0;
+}
+.checked-items {
+  background-color: #333;
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin: 5px 2px;
+  color: white;
+  float: left;
+}
+.actionBtnContainer {
+  display: flex;
+  align-items: center;
+}
+.actionBtnContainer > button {
+  border: 0;
+  margin: 0 5px;
+  font-size: 14px;
+}
