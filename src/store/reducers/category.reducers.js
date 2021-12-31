@@ -71,6 +71,8 @@ export default (state = initState, action) => {
       state = {
         ...state,
         categories: updatedCategories,
+
+        
         loading: false,
       };
       break;
