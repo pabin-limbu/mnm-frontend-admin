@@ -4,7 +4,11 @@ import { Container, Row, Col, Modal, Table } from "react-bootstrap";
 import MyModal from "../../components/ui/modal";
 import Input from "../../components/ui/input/input";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, updateProduct } from "../../store/actions/product.actions";
+import {
+  addProduct,
+  updateProduct,
+  deleteProduct,
+} from "../../store/actions/product.actions";
 import { generatePublicUrl } from "../../urlConfig";
 import EditProductModal from "./components/EditProductModal";
 import ProductDetailsModal from "./components/ProductDetailsModal";
@@ -31,7 +35,13 @@ function Product() {
 
   /**MODAL FUNCTIOn */
   const handleShow = () => setShow(true);
+
   const handleClose = () => {
+    setShow(false);
+  };
+  /**MODAL FUNCTION END */
+
+  const handleSave = () => {
     const form = new FormData();
     form.append("name", name);
     form.append("quantity", quantity);
@@ -41,11 +51,8 @@ function Product() {
     for (let pic of productPictures) {
       form.append("productPicture", pic);
     }
-
     dispatch(addProduct(form));
-    setShow(false);
   };
-  /**MODAL FUNCTION END */
 
   /**CATEGORY LIST FUCNTION */
   const createCtegorylist = (categories, options = []) => {
@@ -99,6 +106,10 @@ function Product() {
     dispatch(updateProduct(form));
   };
 
+  const handleDeleteProduct = (product) => {
+    dispatch(deleteProduct(product));
+  };
+
   const editProductModalHandleClose = () => {
     setEditProductModal(false);
   };
@@ -143,7 +154,15 @@ function Product() {
                 </td>
                 <td>
                   {" "}
-                  <button>Delete</button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+
+                      handleDeleteProduct(product);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))
@@ -166,6 +185,7 @@ function Product() {
         handleClose={handleClose}
         modalTitle="Add new product"
         btnName="Add product"
+        handleSave={handleSave}
       >
         <Modal.Body>
           <Input

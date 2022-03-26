@@ -26,6 +26,12 @@ function Layout(props) {
                   <NavLink to={"/category"}>category</NavLink>
                 </li>
                 <li>
+                  <NavLink to={"/banner"}>Banner</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/comments"}>Comments</NavLink>
+                </li>
+                <li>
                   <NavLink to={"/orders"}>orders</NavLink>
                 </li>
               </ul>

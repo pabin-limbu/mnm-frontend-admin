@@ -1,4 +1,4 @@
-import { Form } from "react-bootstrap";
+import { FloatingLabel, Form } from "react-bootstrap";
 import React from "react";
 
 const Input = (props) => {
@@ -45,6 +45,21 @@ const Input = (props) => {
             type="checkbox"
             label={props.label}
             checked={props.value}
+            onChange={props.onChange}
+          />
+        </Form.Group>
+      );
+      break;
+    case "textArea":
+      input = (
+        <Form.Group controlId="">
+          {props.label && <Form.Label>{props.label}</Form.Label>}
+          <Form.Text className="text-muted">{props.errorMessage}</Form.Text>
+          <Form.Control
+            as="textarea"
+            placeholder={props.placeholder}
+            style={{ height: "100px" }}
+            value={props.value}
             onChange={props.onChange}
           />
         </Form.Group>

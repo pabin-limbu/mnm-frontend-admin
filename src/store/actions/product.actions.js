@@ -18,3 +18,10 @@ export const updateProduct = (form) => {
     console.log(res);
   };
 };
+
+export const deleteProduct = (product) => {
+  return async (dispatch) => {
+    const res = await axiosInstance.post("/products/delete", product);
+    console.log(res);
+  };
+};

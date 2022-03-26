@@ -15,7 +15,7 @@ function EditProductModal(props) {
   } = props;
 
   const categoryList = createCtegorylist(categories.categories);
-  console.log({ productDetails });
+  // console.log({ productDetails });
 
   return (
     <div>

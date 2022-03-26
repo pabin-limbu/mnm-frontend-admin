@@ -309,7 +309,6 @@ function Category() {
         setCategoryName={setCategoryName}
         parentCategoryId={parentCategoryId}
         categoryName={categoryName}
-        parentCategoryId={parentCategoryId}
         setParentCategoryId={setParentCategoryId}
       />
       {/* RENDER UPDATE CATEGORY MODAL */}
