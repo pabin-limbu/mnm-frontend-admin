@@ -3,7 +3,7 @@ import { useState } from "react";
 import Layout from "../../components/layout/layout";
 import MyModal from "../../components/ui/modal/MyModal";
 import Input from "../../components/ui/input/input";
-import { Col, Container, Form, FormGroup, Row, Table } from "react-bootstrap";
+import { Button, Col, Container, Form, FormGroup, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addBanner,
@@ -19,6 +19,7 @@ function Banner() {
   const [linkType, setlinkType] = useState("");
   const [bannerImage, setBannerImage] = useState([]);
   const [slug, setSlug] = useState("");
+  const [slugId, setSlugID] = useState("");
   const [category, setCategory] = useState("");
   const [bannerDetails, setbannerDetails] = useState(null);
   const [bannerDetailsModalShow, setBannerDetailsModalShow] = useState(false);
@@ -47,11 +48,21 @@ function Banner() {
 
   const handleBannerSave = () => {
     const form = new FormData();
-    form.append("name", name);
-    form.append("bannerImage", bannerImage);
-    form.append("linkType", linkType);
-    form.append("slug", slug);
-    form.append("category", category);
+    if (linkType == "product") {
+      form.append("name", name);
+      form.append("bannerImage", bannerImage);
+      form.append("linkType", linkType);
+      form.append("slug", slug);
+      form.append("slugId", slugId);
+      form.append("category", category);
+    }
+    if (linkType !== "product") {
+      form.append("name", name);
+      form.append("bannerImage", bannerImage);
+      form.append("linkType", linkType);
+      form.append("slug", slug);
+      form.append("category", category);
+    }
     dispatch(addBanner(form));
   };
 
@@ -61,6 +72,13 @@ function Banner() {
 
   const handleLinkSelect = (e) => {
     setSlug(e.target.value);
+    if (linkType == "product") {
+      const productId =
+        e.target.options[e.target.options.selectedIndex].getAttribute(
+          "product"
+        );
+      setSlugID(productId);
+    }
     const catid =
       e.target.options[e.target.options.selectedIndex].getAttribute("category");
     setCategory(catid);
@@ -96,6 +114,7 @@ function Banner() {
         value: product._id,
         name: product.name,
         slug: product.slug,
+        category: product.category._id,
       });
     }
     return options;
@@ -139,14 +158,14 @@ function Banner() {
                       <td>{banner.slug}</td>
 
                       <td>
-                        <button
+                        <Button
                           onClick={(event) => {
                             event.stopPropagation();
                             handleBannerDelete(banner);
                           }}
                         >
                           Delete
-                        </button>
+                        </Button>
                       </td>
                     </tr>
                   );
@@ -249,7 +268,8 @@ function Banner() {
                         <option
                           key={item.value}
                           //value={item.slug}
-                          category={item.value}
+                          category={item.category}
+                          product={item.value}
                         >
                           {item.name}
                         </option>
@@ -263,9 +283,6 @@ function Banner() {
       </MyModal>
     );
   };
-
-  //logs
-  // console.log(bannerDetails);
 
   return (
     <Layout sidebar>

@@ -7,12 +7,12 @@ import Signup from "./container/signup/signup";
 import PrivateRoute from "./components/HOC/privateRoute";
 import Category from "./container/Category";
 import Product from "./container/Product";
-import NewPage from "./container/NewPage";
 import Banner from "./container/Banner";
 import UserComments from "./container/UserComments";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserLogedIn } from "./store/actions/auth.actons";
 import { getInitialData } from "./store/actions";
+import Order from "./container/Order";
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -37,13 +37,13 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute exact path="/" component={home} />
-          <PrivateRoute exact path="/page" component={NewPage} />
           <PrivateRoute path="/category" component={Category} />
           <PrivateRoute path="/products" component={Product} />
           <PrivateRoute path="/banner" component={Banner} />
           <PrivateRoute path="/comments" component={UserComments} />
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/order" component={Order} />
         </Switch>
       </Router>
     </div>

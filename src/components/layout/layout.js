@@ -16,9 +16,7 @@ function Layout(props) {
                     Home
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to={"/page"}>PAGE</NavLink>
-                </li>
+
                 <li>
                   <NavLink to={"/products"}>products</NavLink>
                 </li>
@@ -32,7 +30,7 @@ function Layout(props) {
                   <NavLink to={"/comments"}>Comments</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/orders"}>orders</NavLink>
+                  <NavLink to={"/order"}>orders</NavLink>
                 </li>
               </ul>
             </Col>

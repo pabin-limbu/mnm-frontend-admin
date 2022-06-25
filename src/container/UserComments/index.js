@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getComment, addComment, deleteComment } from "../../store/actions";
 import Layout from "../../components/layout/layout";
@@ -113,13 +113,13 @@ function UserComments() {
                       <td>{comment.comment}</td>
 
                       <td>
-                        <button
+                        <Button
                           onClick={(event) => {
                             handleDeleteUserComment(comment._id);
                           }}
                         >
                           Delete
-                        </button>
+                        </Button>
                       </td>
                     </tr>
                   );

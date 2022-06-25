@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./store/store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 /**keep redux store in window variable so that it can be accessable from console */
 window.store = store;
 

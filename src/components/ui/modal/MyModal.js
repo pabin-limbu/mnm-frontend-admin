@@ -9,7 +9,12 @@ function MyModal(props) {
       <Modal.Header closeButton>
         <Modal.Title>{props.modalTitle}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{props.children}</Modal.Body>
+      <Modal.Body>
+        {props.children}{" "}
+        <div className="error-msg d-flex align-items-center justify-content-center text-danger">
+          {props.errormsg}
+        </div>{" "}
+      </Modal.Body>
       <Modal.Footer>
         {/* check if multiple btn exist- if yes loop if no default btn */}
         {props.buttons ? (

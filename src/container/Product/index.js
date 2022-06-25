@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../components/layout/layout";
-import { Container, Row, Col, Modal, Table } from "react-bootstrap";
+import { Container, Row, Col, Modal, Table, Button } from "react-bootstrap";
 import MyModal from "../../components/ui/modal";
 import Input from "../../components/ui/input/input";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,13 +33,11 @@ function Product() {
   const dispatch = useDispatch();
   /**state variables END */
 
-  /**MODAL FUNCTIOn */
   const handleShow = () => setShow(true);
-
   const handleClose = () => {
     setShow(false);
   };
-  /**MODAL FUNCTION END */
+
 
   const handleSave = () => {
     const form = new FormData();
@@ -100,10 +98,7 @@ function Product() {
     form.append("description", productDetails.description);
     form.append("category", productDetails.category._id);
     form.append("isfeatured", productDetails.isFeatured ? true : false);
-    // for (var pair of form) {
-    //   console.log(pair[1]);
-    // }
-    dispatch(updateProduct(form));
+     dispatch(updateProduct(form));
   };
 
   const handleDeleteProduct = (product) => {
@@ -143,18 +138,18 @@ function Product() {
                 <td>{product.quantity}</td>
                 <td>{product.category.name}</td>
                 <td>
-                  <button
+                  <Button
                     onClick={(e) => {
                       e.stopPropagation();
                       showEditProductModal(product);
                     }}
                   >
                     edit
-                  </button>
+                  </Button>
                 </td>
                 <td>
                   {" "}
-                  <button
+                  <Button
                     onClick={(e) => {
                       e.stopPropagation();
 
@@ -162,7 +157,7 @@ function Product() {
                     }}
                   >
                     Delete
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))

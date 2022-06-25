@@ -17,8 +17,6 @@ const UpdateCategoryModal = (props) => {
     handleEditCategoryInput,
   } = props;
 
-  console.log({ expandedArray, checkedArray });
-
   return (
     <CategroyModal
       show={props.show}
