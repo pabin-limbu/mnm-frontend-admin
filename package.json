@@ -2,7 +2,7 @@
   "name": "admin-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://localhost/admin",
+  "homepage": "http://54.153.46.99/admin",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
