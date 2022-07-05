@@ -34,7 +34,7 @@ function App() {
   }, [auth.authenticate]);
   return (
     <div className="App">
-      <Router>
+      <Router basename="/admin">
         <Switch>
           <PrivateRoute exact path="/" component={home} />
           <PrivateRoute path="/category" component={Category} />
