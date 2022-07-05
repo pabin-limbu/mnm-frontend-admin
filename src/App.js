@@ -46,6 +46,7 @@ function App() {
           <Route exact path="/order" component={Order} />
         </Switch>
       </Router>
+      <p>THIS IS APP.JS</p>
     </div>
   );
 }
